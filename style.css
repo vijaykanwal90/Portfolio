@@ -2,7 +2,9 @@
     margin: 0;
     padding: 0;
 }
-
+html{
+    scroll-behavior: smooth;
+}
 body {
     background-color: #010e1b;
     /* color: rgb(98, 35, 10); */
