@@ -159,12 +159,12 @@
                     <a href="images/VijaySinghKanwal.pdf" class="btn btn2" target="blank">Download CV</a>
                 </div>
                 <div class="contact-right">
-                    <form>
-                        <input type="text" name="name" placeholder="Your Name" required>
-                        <input type="email" name="email" placeholder="Your Email" required>
+                    <form name="submit-to-google-sheet">
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your Email" required>
                         <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
                         <button type="submit" class="btn btn2">Submit</button>
-
+<span id="msg"></span>
                     </form>
                 </div>
 
@@ -188,6 +188,22 @@
             document.getElementById(tabname).classList.add("active-tab");
         }
     </script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw_hnlMztEGzszcFXVymTFxlYxFBkWoATYes4MDKGf9sDHyUEW0acjTje7ISZxb1t18/exec'
+        const form = document.forms['submit-to-google-sheet']
+      const msg =document.getElementById("msg")
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML="message sent succesfully"
+                setTimeout(function(){
+msg.innerHTML=""},5000)
+form.reset
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
 </body>
 
 </html>
